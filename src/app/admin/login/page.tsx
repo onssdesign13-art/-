@@ -1,10 +1,13 @@
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import LoginForm from "@/components/admin/LoginForm";
+import { isAuthenticated } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 
 export const dynamic = "force-dynamic";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  if (await isAuthenticated()) redirect("/admin");
   const settings = getSettings();
   return (
     <div className="flex min-h-screen items-center justify-center px-6">

@@ -49,7 +49,7 @@ export default function QrDialog({
             </p>
           </div>
           <button type="button" className="label hover:text-ink" onClick={onClose}>
-            Закрыть ✕
+            Закрыть ×
           </button>
         </header>
 
@@ -80,7 +80,7 @@ export default function QrDialog({
             Печать паспорта
           </a>
           <a className="btn btn-ghost btn-sm" href={page.url} target="_blank" rel="noreferrer">
-            Открыть страницу ↗
+            Открыть страницу →
           </a>
         </footer>
       </div>

@@ -109,7 +109,7 @@ export default function PagesTable({ pages }: { pages: AdminPage[] }) {
                       rel="noreferrer"
                       className="mono text-[12px] hover:text-accent"
                     >
-                      /o/{page.code} ↗
+                      /o/{page.code} →
                     </a>
                   </td>
                   <td className="td mono text-[12px] text-muted">

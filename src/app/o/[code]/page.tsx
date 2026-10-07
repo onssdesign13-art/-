@@ -52,17 +52,20 @@ export default async function ObjectPage({ params }: Props) {
 
   const specs: { label: string; value: string | null }[] = [
     { label: t.collection, value: object.collectionName },
-    { label: t.serial, value: edition },
     {
       label: t.edition,
-      value: object.limited ? t.limited : t.openEdition,
+      value: object.limited
+        ? object.editionSize
+          ? `${object.editionSize} экз.`
+          : t.limited
+        : t.openEdition,
     },
     { label: t.category, value: object.category },
     { label: t.material, value: object.material },
     { label: t.dimensions, value: object.dimensions },
     { label: t.year, value: object.year ? String(object.year) : null },
     { label: t.released, value: release },
-    { label: t.code, value: object.productCode },
+    { label: t.sku, value: object.productCode },
   ].filter((row) => row.value);
 
   return (
@@ -79,8 +82,18 @@ export default async function ObjectPage({ params }: Props) {
         ) : null}
 
         <section className="grid grid-cols-1 gap-px border-b border-line md:grid-cols-12">
+          <div className="order-1 border-b border-line px-6 py-6 md:hidden">
+            <p className="label">
+              {object.collectionName ?? settings.brand_name}
+              {object.year ? ` · ${object.year}` : ""}
+            </p>
+            <h1 className="mt-3 text-[30px] font-medium leading-[1.03] tracking-tight">
+              {object.productName}
+            </h1>
+          </div>
+
           <div className="order-2 md:order-1 md:col-span-7 md:border-r md:border-line">
-            <figure className="aspect-[4/5] w-full bg-[#f2f2ef]">
+            <figure className="aspect-[4/5] max-h-[68vh] w-full overflow-hidden bg-[#f2f2ef] md:max-h-[84vh]">
               {cover ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -110,13 +123,16 @@ export default async function ObjectPage({ params }: Props) {
             ) : null}
           </div>
 
-          <div className="order-1 flex flex-col md:order-2 md:col-span-5 md:pl-8 md:pt-8">
-            <p className="label">
-              {object.collectionName ?? settings.brand_name} {object.year ? `· ${object.year}` : ""}
-            </p>
-            <h1 className="mt-3 text-[34px] font-medium leading-[1.02] tracking-tight md:text-[46px]">
-              {object.productName}
-            </h1>
+          <div className="order-3 flex flex-col md:order-2 md:col-span-5 md:pl-8 md:pt-8">
+            <div className="hidden md:block">
+              <p className="label">
+                {object.collectionName ?? settings.brand_name}
+                {object.year ? ` · ${object.year}` : ""}
+              </p>
+              <h1 className="mt-3 text-[34px] font-medium leading-[1.02] tracking-tight md:text-[46px]">
+                {object.productName}
+              </h1>
+            </div>
 
             <div className="mt-8 border-t border-ink pt-4">
               <p className="label">{t.serial}</p>
@@ -165,6 +181,11 @@ export default async function ObjectPage({ params }: Props) {
             <p className="label">{t.code}</p>
             <p className="mono mt-1 text-[15px] tracking-[0.2em]">{object.code}</p>
             <p className="label mt-4">{settings.footer_note}</p>
+            <p className="mt-3">
+              <Link href="/" className="label hover:text-ink">
+                {t.home} →
+              </Link>
+            </p>
             {settings.contact ? (
               <p className="mt-1 text-[13px]">{settings.contact}</p>
             ) : null}

@@ -223,7 +223,7 @@ export default function PagesManager({
                       rel="noreferrer"
                       className="mono text-[12px] hover:text-accent"
                     >
-                      /o/{page.code} ↗
+                      /o/{page.code} →
                     </a>
                   </td>
                   <td className="td text-[13px] text-muted">{page.label ?? "—"}</td>

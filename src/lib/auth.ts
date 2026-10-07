@@ -51,14 +51,19 @@ export function cookieOptions() {
     sameSite: "lax" as const,
     path: "/",
     maxAge: TTL_MS / 1000,
-    secure: process.env.NODE_ENV === "production" && !envAllowsInsecureCookies(),
+    secure: cookieSecure(),
   };
 }
 
-function envAllowsInsecureCookies(): boolean {
-  // Set INSECURE_COOKIES=1 when running the production build over plain HTTP
-  // (e.g. http://<vps-ip>:3000 without a TLS terminator).
-  return process.env.INSECURE_COOKIES === "1";
+/**
+ * The session cookie is marked Secure only when the site is actually served over
+ * HTTPS (BASE_URL) — otherwise plain-HTTP setups (localhost, a bare VPS IP)
+ * would silently lose the login. Override with COOKIE_SECURE / INSECURE_COOKIES.
+ */
+function cookieSecure(): boolean {
+  if (process.env.INSECURE_COOKIES === "1") return false;
+  if (process.env.COOKIE_SECURE === "1") return true;
+  return /^https:/i.test(process.env.BASE_URL ?? "");
 }
 
 /** Server component helper: is the current visitor an authenticated admin? */

@@ -8,6 +8,7 @@ import PagesManager, { type EditorPage } from "./PagesManager";
 import ProductForm from "./ProductForm";
 import type { CollectionSummary } from "@/lib/repo";
 import type { MediaRow, ProductSummary } from "@/lib/types";
+import { formatDate } from "@/lib/i18n";
 
 type Tab = "data" | "photos" | "pages";
 
@@ -62,7 +63,9 @@ export default function ProductWorkspace({
           <div>
             <p className="label">
               {product.collection_name ?? "Без коллекции"}
-              {product.collection_release_date ? ` · релиз ${product.collection_release_date}` : ""}
+              {product.collection_release_date
+                ? ` · релиз ${formatDate(product.collection_release_date)}`
+                : ""}
             </p>
             <h1 className="mt-2 text-[26px] font-medium leading-tight md:text-[32px]">
               {product.name}
@@ -79,7 +82,7 @@ export default function ProductWorkspace({
                 target="_blank"
                 rel="noreferrer"
               >
-                Открыть страницу ↗
+                Открыть страницу →
               </a>
             ) : null}
             <Link href={`/admin/pages?q=${product.code}`} className="btn btn-ghost">

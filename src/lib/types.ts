@@ -91,7 +91,7 @@ export const DEFAULT_SETTINGS: BrandSettings = {
   language: "ru",
   base_url: process.env.BASE_URL?.trim() || "http://localhost:3000",
   certificate_title: "Паспорт объекта",
-  footer_note: "Подлинность объекта подтверждена.",
+  footer_note: "Ручная работа — небольшие отличия неизбежны.",
   contact: "",
 };
 

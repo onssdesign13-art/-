@@ -85,15 +85,19 @@ export default async function PrintPassportPage({
             </h1>
           </div>
 
-          <div className="mt-4 flex items-end justify-between border-t border-line pt-3">
-            <div>
-              <p className="label">Номер в серии</p>
-              <p className="mono mt-1 text-[26pt] leading-none">{edition}</p>
+          <div className="mt-4 border-t border-line pt-3">
+            <p className="label">Номер в серии</p>
+            <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+              <p className="mono text-[24pt] leading-none">{edition}</p>
+              <p className="label">
+                {Number(product.limited) === 1 ? "Лимитированная серия" : "Открытая серия"}
+              </p>
             </div>
-            <p className="label text-right">
-              {Number(product.limited) === 1 ? "Лимитированная серия" : "Открытая серия"}
-            </p>
           </div>
+
+          {product.description ? (
+            <p className="mt-4 text-[8pt] leading-[1.45] text-ink/80">{product.description}</p>
+          ) : null}
 
           <div className="sheet-meta mt-4 border-t border-line pt-3">
             {specs.map((row) => (

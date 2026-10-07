@@ -14,6 +14,7 @@ export interface PublicStrings {
   limited: string;
   openEdition: string;
   code: string;
+  sku: string;
   verified: string;
   verifiedText: string;
   voided: string;
@@ -39,6 +40,7 @@ const ru: PublicStrings = {
   limited: "Лимитированная серия",
   openEdition: "Открытая серия",
   code: "Код",
+  sku: "Артикул",
   verified: "Подлинность подтверждена",
   verifiedText: "Каждый объект маркируется индивидуальным кодом и уникальной страницей.",
   voided: "Страница аннулирована",
@@ -64,6 +66,7 @@ const en: PublicStrings = {
   limited: "Limited edition",
   openEdition: "Open edition",
   code: "Code",
+  sku: "SKU",
   verified: "Authenticity confirmed",
   verifiedText: "Every object carries a unique code and its own permanent page.",
   voided: "Page revoked",
