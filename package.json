@@ -1,0 +1,32 @@
+{
+  "name": "objet-passport",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Passport pages for designer collectible objects: admin catalog + generated product pages with QR codes.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "typecheck": "tsc --noEmit",
+    "seed": "node scripts/seed.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "next": "^15.1.6",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.7",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}
