@@ -1,0 +1,43 @@
+@page {
+  size: A6;
+  margin: 0;
+}
+
+.sheet {
+  box-sizing: border-box;
+  width: 105mm;
+  height: 148mm;
+  padding: 8mm;
+  background: #fff;
+  color: rgb(var(--ink));
+  border: 1px solid rgb(var(--line));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sheet-meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2mm 4mm;
+  font-size: 8pt;
+  line-height: 1.35;
+}
+
+.sheet-qr {
+  width: 34mm;
+  height: 34mm;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .sheet {
+    border: none;
+    page-break-after: always;
+  }
+}

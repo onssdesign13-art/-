@@ -8,7 +8,7 @@ import {
   type ProductInput,
 } from "@/lib/repo";
 import { getSettings } from "@/lib/settings";
-import { qrDataUrl, objectUrl } from "@/lib/qr";
+import { objectUrl } from "@/lib/qr";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,14 +24,12 @@ export async function GET(request: Request, { params }: Ctx) {
   const pages = pagesForProduct(id);
   const base = new URL(request.url).origin;
   const { base_url } = getSettings();
-  const withQr = await Promise.all(
-    pages.map(async (page) => {
-      const url = objectUrl(base_url || base, page.code);
-      return { ...page, url, qr: await qrDataUrl(url, { size: 240 }) };
-    }),
-  );
+  const withUrl = pages.map((page) => ({
+    ...page,
+    url: objectUrl(base_url || base, page.code),
+  }));
 
-  return ok({ product, photos: productPhotos(id), pages: withQr });
+  return ok({ product, photos: productPhotos(id), pages: withUrl });
 }
 
 export async function PATCH(request: Request, { params }: Ctx) {

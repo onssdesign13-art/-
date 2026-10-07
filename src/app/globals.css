@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --paper: #ffffff;
-  --ink: #0b0b0b;
-  --muted: #6e6e6e;
-  --line: #d9d9d4;
-  --line-strong: #0b0b0b;
-  --accent: #d93a16;
-  --grid: 1px solid var(--line);
+  --paper: 255 255 255;
+  --ink: 11 11 11;
+  --muted: 110 110 110;
+  --line: 217 217 212;
+  --line-strong: 11 11 11;
+  --accent: 217 58 22;
+  --grid: 1px solid rgb(var(--line));
 }
 
 * {
@@ -19,8 +19,8 @@
 
 html,
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
 }
 
 body {
@@ -31,7 +31,7 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: rgb(var(--accent));
   color: #fff;
 }
 
@@ -63,7 +63,7 @@ body {
   textarea:focus-visible,
   button:focus-visible,
   a:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid rgb(var(--accent));
     outline-offset: 1px;
   }
 }

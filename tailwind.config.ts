@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "var(--ink)",
-        paper: "var(--paper)",
-        muted: "var(--muted)",
-        line: "var(--line)",
-        accent: "var(--accent)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
       },
       fontFamily: {
         sans: [
