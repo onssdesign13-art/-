@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Objet — запустить сайт
+Comment=Поднимает локальный сайт паспортов объектов и открывает браузер
+Exec=bash -c 'cd "$(dirname %k)" && ./ЗАПУСТИТЬ-САЙТ.sh'
+Icon=applications-internet
+Terminal=true
+Categories=Development;
